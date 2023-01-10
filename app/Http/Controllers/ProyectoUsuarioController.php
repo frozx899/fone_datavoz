@@ -97,12 +97,14 @@ class ProyectoUsuarioController extends Controller
 
     public function proyectoUsuarios($id)
     {
+        $user = $id;
 
-        $sql = "SELECT p.nombre,pu.users_id , p.estado
+        $sql = "SELECT p.nombre,pu.users_id , p.estado , p.codigo
             FROM proyecto__usuarios pu 
             JOIN proyectos p
-            WHERE pu.users_id = 'john'
-            GROUP BY p.nombre,pu.users_id, p.estado; ";
+            ON(p.id = pu.proyecto_id)
+            WHERE pu.users_id = '$user'
+            GROUP BY p.nombre,pu.users_id, p.estado,p.codigo; ";
         $results = DB::select(DB::raw($sql));
         return $results;
 

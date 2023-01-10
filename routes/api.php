@@ -29,6 +29,10 @@ Route::get('/usuariosactivos','App\Http\Controllers\UserController@usuariosactiv
 Route::post('/cargarusuarios','App\Http\Controllers\ProyectoUsuarioController@cargarusuarios');
 Route::get('/proyectoUsuarios/{id}','App\Http\Controllers\ProyectoUsuarioController@proyectoUsuarios');
 
+//carga de contactos
+Route::post('/importCSVContactos','App\Http\Controllers\ContactoController@importCSVContactos');
+Route::get('/obtenerContacto/{id}','App\Http\Controllers\ContactoController@obtenerContacto');
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

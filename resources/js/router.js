@@ -4,6 +4,8 @@ import inicio from './components/App.vue';
 
 //proyectos
 import proyIndex from './components/proyecto/index.vue';
+import proyCont from './components/proyecto/contactosProyecto.vue';
+
 
 //usuarios
 import indexUser from './components/usuario/indexUsuario.vue';
@@ -43,6 +45,11 @@ const routes = [
         path: '/Proyecto_usuario',
         name: 'Proyecto_usuario',
         component: usuarioProyecto
+    },
+    {
+        path: '/Proyecto_contacto',
+        name: 'Proyecto_contacto',
+        component: proyCont
     },
 ];
 

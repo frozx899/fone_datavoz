@@ -23,7 +23,7 @@
                 </span>
                 <span class="clactivo_span" v-if="props.column.field == 'accion'">
                     <span style="font-weight: bold; color: blue;">
-                        <button class="btn btn-success">Comenzar</button>
+                        <router-link :to="{path:'Operaciones', query:{sort: props.row.codigo}}" class="btn btn-info">Contactar</router-link>
                     </span> 
                 </span>
                 </template>
