@@ -68,9 +68,13 @@ class ContactoController extends Controller
      * @param  \App\Models\Contacto  $contacto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contacto $contacto)
+    public function update($id, Request $request)
     {
-        //
+        $contacto = Contacto::findOrFail($id);
+        $contacto->fill($request->post())->save();
+        return response()->json([
+            'encuesta'=> $contacto
+        ]);
     }
 
     /**

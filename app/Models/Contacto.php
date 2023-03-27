@@ -22,6 +22,11 @@ class Contacto extends Model
         'telefono3',
         'telefono4',
         'telefono5',
+        'incidencia1',
+        'incidencia2',
+        'incidencia3',
+        'incidencia4',
+        'incidencia5',
         'estado',
         'ultimo_contacto',
     ];

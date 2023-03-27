@@ -64,7 +64,7 @@
             </div>
         </div>
         
-        <div class="container col-4">
+        <div class="next">
             <a href="#" type="button" class="btn btn-info" target="_blank"> Siguiente encuestado</a>
         </div>
 
@@ -193,20 +193,7 @@ export default ({
         cargarContacto(){
             axios.get('/api/obtenerContacto/'+this.$route.query.sort)
             .then(response =>{
-                this.contacto.id = response.data[0]['id'];
-                this.contacto.codigo = response.data[0]['codigo'];
-                this.contacto.rut = response.data[0]['rut'];
-                this.contacto.tipo = response.data[0]['tipo'];
-                this.contacto.programa = response.data[0]['programa'];
-                this.contacto.nombre = response.data[0]['nombre'];
-                this.contacto.sexo = response.data[0]['sexo'];
-                this.contacto.pais = response.data[0]['pais'];
-                this.contacto.telefono1 = response.data[0]['telefono1'];
-                this.contacto.telefono2 = response.data[0]['telefono2'];
-                this.contacto.telefono3 = response.data[0]['telefono3'];
-                this.contacto.telefono4 = response.data[0]['telefono4'];
-                this.contacto.telefono5 = response.data[0]['telefono5'];
-               
+                this.contacto= response.data[0];
             })
             .catch(e=>{
                 console.log(e);
@@ -239,5 +226,10 @@ export default ({
 .contIncidencia{
     background-color: #BBEEED; 
     margin-top: 25px;
+}
+.next{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 </style>

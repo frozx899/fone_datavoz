@@ -27,6 +27,11 @@ return new class extends Migration
             $table->string('telefono3')->nullable();
             $table->string('telefono4')->nullable();
             $table->string('telefono5')->nullable();
+            $table->string('incidencia1')->nullable();
+            $table->string('incidencia2')->nullable();
+            $table->string('incidencia3')->nullable();
+            $table->string('incidencia4')->nullable();
+            $table->string('incidencia5')->nullable();
             $table->string('estado');
             $table->date('ultimo_contacto')->nullable();
             $table->timestamps();

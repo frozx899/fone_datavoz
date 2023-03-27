@@ -35,7 +35,10 @@ class IncidenciasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $incidencia = Incidencias::create($request->post());
+        return response()->json([
+            'respuesta' => $incidencia
+        ]);
     }
 
     /**

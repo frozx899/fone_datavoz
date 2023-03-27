@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('incidencias', function (Blueprint $table) {
             $table->id();
+            $table->string('telefono')->nullable();
+            $table->string('incidencia')->nullable();
             $table->timestamps();
         });
     }

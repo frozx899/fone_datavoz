@@ -51,6 +51,8 @@ const routes = [
         name: 'Proyecto_contacto',
         component: proyCont
     },
+
+    
 ];
 
 const router = createRouter({
