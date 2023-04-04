@@ -73,10 +73,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function usuariosactivos()
+    public function usuariosactivos($id)
     {
-        $usuarios = DB::table('users')
-        ->get();
+        $sql="SELECT * FROM users 
+        WHERE username NOT in (SELECT users_id from proyecto__usuarios WHERE proyecto_id = $id);";
+        $usuarios = DB::select(DB::raw($sql));
+        
 
         return response()->json($usuarios);
     }

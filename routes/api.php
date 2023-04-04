@@ -23,7 +23,7 @@ Route::get('/proyectoActivos','App\Http\Controllers\ProyectoController@proyectoA
 Route:: resource('users', App\Http\Controllers\UserController::class);
 Route::get('/buscarUsuario/{id}','App\Http\Controllers\UserController@buscarusuario');
 Route::post('/userEdit','App\Http\Controllers\UserController@userEdit');
-Route::get('/usuariosactivos','App\Http\Controllers\UserController@usuariosactivos');
+Route::get('/usuariosactivos/{id}','App\Http\Controllers\UserController@usuariosactivos');
 
 //proyecto-usuarios
 Route::post('/cargarusuarios','App\Http\Controllers\ProyectoUsuarioController@cargarusuarios');
@@ -32,6 +32,20 @@ Route::get('/proyectoUsuarios/{id}','App\Http\Controllers\ProyectoUsuarioControl
 //carga de contactos
 Route::post('/importCSVContactos','App\Http\Controllers\ContactoController@importCSVContactos');
 Route::get('/obtenerContacto/{id}','App\Http\Controllers\ContactoController@obtenerContacto');
+Route::post('/gInicioEncuesta','App\Http\Controllers\ContactoController@inicioEncuesta');
+Route::post('/fEncuesta','App\Http\Controllers\ContactoController@finEncuesta');
+
+
+
+//Incidencias
+Route::resource('incidencia',App\Http\Controllers\IncidenciasController::class);
+Route::get('/inciContacto/{id}','App\Http\Controllers\IncidenciasController@incidenciaContacto');
+Route::post('/incidencia1','App\Http\Controllers\ContactoController@incidenciaContacto1');
+Route::post('/incidencia2','App\Http\Controllers\ContactoController@incidenciaContacto2');
+Route::post('/incidencia3','App\Http\Controllers\ContactoController@incidenciaContacto3');
+Route::post('/incidencia4','App\Http\Controllers\ContactoController@incidenciaContacto4');
+Route::post('/incidencia5','App\Http\Controllers\ContactoController@incidenciaContacto5');
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

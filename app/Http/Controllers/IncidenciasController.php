@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Incidencias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class IncidenciasController extends Controller
 {
@@ -37,7 +38,7 @@ class IncidenciasController extends Controller
     {
         $incidencia = Incidencias::create($request->post());
         return response()->json([
-            'respuesta' => $incidencia
+            'respuesta' => 'Se ha registrado la incidencia'
         ]);
     }
 
@@ -84,5 +85,16 @@ class IncidenciasController extends Controller
     public function destroy(Incidencias $incidencias)
     {
         //
+    }
+
+    public function incidenciaContacto($id)
+    {
+        $sql ="SELECT i.telefono as telefono,ni.nombre as nombre,i.created_at as fecha FROM incidencias i
+                join nombre_incidencia ni
+                on(i.incidencia = ni.id)
+                WHERE i.idcontacto = $id;";
+        $incidencia = DB::select(DB::raw($sql));
+
+        return response()->json($incidencia);
     }
 }

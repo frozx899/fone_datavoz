@@ -116,15 +116,14 @@ export default {
         abrirModal(id){
             this.codigoProyecto= id;
             $('#myModal').modal('show');
-            axios.get('/api/usuariosactivos')
+            axios.get('/api/usuariosactivos/'+this.codigoProyecto)
             .then(response=>{
                 this.options = response.data;
-                console.log(response.data);
+                
             }) 
         },
         guardarusuarios()
         {
-            console.log(this.selected);
             this.selected.forEach(element => {
                 this.userProyecto.proyecto_id = this.codigoProyecto;
                 this.userProyecto.users_id = element['username'];

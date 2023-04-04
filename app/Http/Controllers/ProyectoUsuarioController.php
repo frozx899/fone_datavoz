@@ -94,7 +94,7 @@ class ProyectoUsuarioController extends Controller
             'respuesta' => 'Se ha creado correctamente'
         ]);
     }
-
+    
     public function proyectoUsuarios($id)
     {
         $user = $id;
@@ -103,7 +103,7 @@ class ProyectoUsuarioController extends Controller
             FROM proyecto__usuarios pu 
             JOIN proyectos p
             ON(p.id = pu.proyecto_id)
-            WHERE pu.users_id = '$user'
+            WHERE pu.users_id = '$user' and p.estado= 'Abierto'
             GROUP BY p.nombre,pu.users_id, p.estado,p.codigo; ";
         $results = DB::select(DB::raw($sql));
         return $results;

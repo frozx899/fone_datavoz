@@ -33,7 +33,14 @@ return new class extends Migration
             $table->string('incidencia4')->nullable();
             $table->string('incidencia5')->nullable();
             $table->string('estado');
+            $table->string('estadotelefono1')->nullable();
+            $table->string('estadotelefono2')->nullable();
+            $table->string('estadotelefono3')->nullable();
+            $table->string('estadotelefono4')->nullable();
+            $table->string('estadotelefono5')->nullable();
             $table->date('ultimo_contacto')->nullable();
+            $table->string('link');
+            $table->string('estado_encuesta');
             $table->timestamps();
         });
     }

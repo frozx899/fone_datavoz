@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ContactoController extends Controller
 {
@@ -97,6 +98,33 @@ class ContactoController extends Controller
             $id_proyecto = $request['id_proyecto'];
             //Carga los datos a la base de datos
              for ($i = 0; $i < count($customerArr); $i ++){
+                $estado1 = 0;
+                $estado2 = 0;
+                $estado3 = 0;
+                $estado4 = 0;
+                $estado5 = 0;
+                $estadoEnc = 0;
+                if($customerArr[$i]['telefono1'] != '')
+                    {
+                        $estado1 = 1;
+                    }
+                if($customerArr[$i]['telefono2'] != '')
+                {
+                    $estado2 = 1;
+                }
+                if($customerArr[$i]['telefono3'] != '')
+                {
+                    $estado3 = 1;
+                }
+                if($customerArr[$i]['telefono4'] != '')
+                {
+                    $estado4 = 1;
+                }
+                if($customerArr[$i]['telefono5'] != '')
+                {
+                    $estado5 = 1;
+                }
+
                  $contacto = Contacto::create([
                     'codigo' => $id_proyecto,
                      'rut' => $customerArr[$i]['rut'],
@@ -110,8 +138,14 @@ class ContactoController extends Controller
                      'telefono3' => $customerArr[$i]['telefono3'],
                      'telefono4' => $customerArr[$i]['telefono4'],
                      'telefono5' => $customerArr[$i]['telefono5'],
-                     'estado' => 'Activo'
-
+                     'estado' => 'Activo',
+                     'estadotelefono1' => $estado1,
+                     'estadotelefono2' => $estado2,
+                     'estadotelefono3' => $estado3,
+                     'estadotelefono4' => $estado4,
+                     'estadotelefono5' => $estado5,
+                     'link' => $customerArr[$i]['link'],
+                     'estado_encuesta' => $estadoEnc
                  ]);}
                 return response()->json(['success' => $id_proyecto]);
             }
@@ -122,11 +156,7 @@ class ContactoController extends Controller
                     $customerArr, 'Error! Comprobar Archivo.'
                 ]);
             }
-            
-        
         }
-    
-
     
     function csvToArray($filename = '', $delimiter = ',')
     {
@@ -163,15 +193,144 @@ class ContactoController extends Controller
 
     public function obtenerContacto ($id)
     {
-        $sql = "SELECT * FROM contactos
-            ORDER BY RAND()
-            LIMIT 1";
+        $sql = "SELECT * FROM contactos 
+        WHERE (EXTRACT(DAY FROM updated_at) = day(NOW()) and hour(TIME(updated_at))-3 <= hour(NOW())-3 and codigo = '$id') or (EXTRACT(DAY FROM updated_at) < day(NOW()) and codigo = '$id')
+        ORDER BY RAND()
+        LIMIT 1;";
 
         $result = DB::select(DB::raw($sql ));
         return $result ;
     }
 
+    public function incidenciaContacto1(Request $request)
+    {
+        $id = $request['id'];
+        $incidencia = $request['incidencia1'];
+        $estado = $request['estadotelefono1'];
+        $estadoContacto = $request['estado'];
+        $current = new Carbon();
 
+        $contacto = Contacto::find($id);
+        $contacto->incidencia1 = $incidencia;
+        $contacto->estadotelefono1 = $estado;
+        $contacto->estado = $estadoContacto;
+        $contacto->ultimo_contacto =$current;
+        $contacto->save();
+
+        return response()->json([
+            'respuesta' => 'Incidencia guardada correctamente'
+        ]);
+    }
+
+    public function incidenciaContacto2(Request $request)
+    {
+        $id = $request['id'];
+        $incidencia = $request['incidencia2'];
+        $estado = $request['estadotelefono2'];
+        $estadoContacto = $request['estado'];
+        $current = new Carbon();
+
+        $contacto = Contacto::find($id);
+        $contacto->incidencia2 = $incidencia;
+        $contacto->estadotelefono2 = $estado;
+        $contacto->estado = $estadoContacto;
+        $contacto->ultimo_contacto =$current;
+        $contacto->save();
+
+        return response()->json([
+            'respuesta' => 'Incidencia guardada correctamente'
+        ]);
+    }
+
+    public function incidenciaContacto3(Request $request)
+    {
+        $id = $request['id'];
+        $incidencia = $request['incidencia3'];
+        $estado = $request['estadotelefono3'];
+        $estadoContacto = $request['estado'];
+        $current = new Carbon();
+
+        $contacto = Contacto::find($id);
+        $contacto->incidencia3 = $incidencia;
+        $contacto->estadotelefono3 = $estado;
+        $contacto->estado = $estadoContacto;
+        $contacto->ultimo_contacto =$current;
+        $contacto->save();
+
+        return response()->json([
+            'respuesta' => 'Incidencia guardada correctamente'
+        ]);
+    }
+
+    public function incidenciaContacto4(Request $request)
+    {
+        $id = $request['id'];
+        $incidencia = $request['incidencia4'];
+        $estado = $request['estadotelefono4'];
+        $estadoContacto = $request['estado'];
+        $current = new Carbon();
+
+        $contacto = Contacto::find($id);
+        $contacto->incidencia4 = $incidencia;
+        $contacto->estadotelefono4 = $estado;
+        $contacto->estado = $estadoContacto;
+        $contacto->ultimo_contacto =$current;
+        $contacto->save();
+
+        return response()->json([
+            'respuesta' => 'Incidencia guardada correctamente'
+        ]);
+    }
+
+    public function incidenciaContacto5(Request $request)
+    {
+        $id = $request['id'];
+        $incidencia = $request['incidencia5'];
+        $estado = $request['estadotelefono5'];
+        $estadoContacto = $request['estado'];
+        $current = new Carbon();
+
+        $contacto = Contacto::find($id);
+        $contacto->incidencia5 = $incidencia;
+        $contacto->estadotelefono5 = $estado;
+        $contacto->estado = $estadoContacto;
+        $contacto->ultimo_contacto =$current;
+        $contacto->save();
+
+        return response()->json([
+            'respuesta' => 'Incidencia guardada correctamente'
+        ]);
+    }
+
+    public function inicioEncuesta(Request $request)
+    {
+        $id = $request['id'];
+        $inicio = $request['estado_encuesta'];
+
+        $contacto = Contacto::find($id);
+        $contacto->estado_encuesta = $inicio;
+        $contacto->save();
+
+        return response()->json([
+            'respuesta' => 'Incidencia guardada correctamente'
+        ]);
+    }
+
+    public function finEncuesta(Request $request)
+    {
+        $id = $request['id'];
+        $estado = $request['estado'];
+        $current = new Carbon();
+
+        $contacto = Contacto::find($id);
+        $contacto->estado = $estado;
+        $contacto->ultimo_contacto =$current;
+        $contacto->save();
+
+        return response()->json([
+            'respuesta' => 'Incidencia guardada correctamente'
+        ]);
+    }
 
 
 

@@ -86,6 +86,8 @@ export default {
   color: black;
   border-radius: 20px;
   padding: 5px;
+  width: 50%;
+  text-align: center;
 }
 .clactivo{
   background-color: green;

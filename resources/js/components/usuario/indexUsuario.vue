@@ -60,12 +60,12 @@
               <input type="text" class="form-control"  placeholder="Username" v-model="usuario.username">
               <label for="">Nombre</label>
               <input type="text" class="form-control"  placeholder="Nombre" v-model="usuario.name">
-              <label for="">Password</label>
+              <label type="password" for="">Password</label>
               <input type="text" class="form-control"  placeholder="Password" v-model="usuario.password">
-              <label for="">Confirmar password</label>
+              <label type="password" for="">Confirmar password</label>
               <input type="text" class="form-control"  placeholder="confirmar password" v-model="usuario.confirmpasword">
               <label for="">Rol</label>
-              <select name="" id="" class="form-control" v-model="usuario.type">
+              <select name="nusuario" id="nusuario" class="form-control" v-model="usuario.type">
                 <option value="admin">admin</option>
                 <option value="supervisor">supervisor</option>
                 <option value="usuario">usuario</option>
@@ -106,7 +106,7 @@
               <label for="">Confirmar password</label>
               <input type="password" class="form-control"  placeholder="confirmar password" v-model="usuarioE.confirmpasword">
               <label for="">Rol</label>
-              <select name="" id="" class="form-control" v-model="usuarioE.type">
+              <select name="dusuario" id="dusuario" class="form-control" v-model="usuarioE.type">
                 <option value="admin">admin</option>
                 <option value="supervisor">supervisor</option>
                 <option value="usuario">usuario</option>

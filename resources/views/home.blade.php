@@ -26,7 +26,7 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#"></a>
                 </li>
             </ul>
         </nav>
@@ -37,21 +37,21 @@
             <!-- Brand Logo -->
             <a  class="brand-link">
 
-            <span class="brand-text font-weight-light" style="color:yellow ;">Datavoz</span>
+            <span class="brand-text font-weight-light" style="font-size:35px; color:#c3bb10!important; margin-left:15px">Datavoz</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel -->
                 <a>
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="font-size:20px; color:#c3bb10!important;">
                         <div class="image">
                             <i class="nav-icon fas fa-user mt-2 text-yellow"></i>
                         </div>
                         <div class="info">
 
                             
-                            <span class="d-block text-yellow ">
+                            <span class="d-block text-yellow " >
                                 {{ Auth::user()->name }}
                                 <br>
                                 {{ Ucfirst(Auth::user()->type) }}
